@@ -22,7 +22,7 @@ const FeaturedItem = ({ item }) => {
                         </Text>
                     </View>
                 </Card.Image>
-                <Text style={{ margin:20 }}>{item.description}</Text>
+                <Text style={{ margin: 20 }}>{item.description}</Text>
             </Card>
         );
     }
@@ -41,11 +41,9 @@ const featPartner = partners.find((item) => item.featured);
 
     return(
         <ScrollView>
-            <Text>
                 <FeaturedItem item={featCampsite} />
                 <FeaturedItem item={featPromotion} />
                 <FeaturedItem item={featPartner} />
-            </Text>
         </ScrollView>
     );
 }
