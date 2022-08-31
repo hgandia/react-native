@@ -1,28 +1,41 @@
-import { useState } from 'react';
+//import { useState } from 'react';
 import { FlatList } from 'react-native';
-import { Avatar, ListItem } from 'react-native-elements';
-import { CAMPSITES } from '../shared/campsites';
+import { Tile } from 'react-native-elements';
+//import { CAMPSITES } from '../shared/campsites';
+import { useSelector } from 'react-redux';
+import { baseUrl } from '../shared/baseUrl';
 
 const DirectoryScreen = ({ navigation }) => {
-    const [campsites, setCampsites] = useState(CAMPSITES);
+    //This is how we used to get the campsites data, while update the local state variable.
+    //const [campsites, setCampsites] = useState(CAMPSITES);
+
+    const campsites = useSelector((state) => state.campsites);
 
     const renderDirectoryItem =({item: campsite}) => {
         return(
-            <ListItem onPress={() => navigation.navigate('CampsiteInfo', { campsite } )}>
-                <Avatar source={campsite.image} rounded />
-                <ListItem.Content>
-                    <ListItem.Title>{campsite.name}</ListItem.Title>
-                    <ListItem.Subtitle>
-                        {campsite.description}
-                    </ListItem.Subtitle>
-                </ListItem.Content>
-            </ListItem>
+            <Tile 
+                title={campsite.name}
+                caption={campsite.desciption}
+                featured
+                onPress={() => navigation.navigate('CampsiteInfo', { campsite } )} 
+                imageSrc={{ uri: baseUrl + campsite.image }}
+            
+            />
+                        
+            //     <Avatar source={{ uri: baseUrl + campsite.image }} rounded />
+            //     <ListItem.Content>
+            //         <ListItem.Title>{campsite.name}</ListItem.Title>
+            //         <ListItem.Subtitle>
+            //             {campsite.description}
+            //         </ListItem.Subtitle>
+            //     </ListItem.Content>
+            // </ListItem>
         )
     }
 
     return(
         <FlatList
-            data={campsites}
+            data={campsites.campsitesArray}
             renderItem={renderDirectoryItem}
             keyExtractor={(item) => item.id.toString()}
         />
