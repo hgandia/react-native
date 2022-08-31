@@ -211,7 +211,6 @@ const Main = () => {
                 />
             </Drawer.Navigator>
         </View>
-        
     );
 }
 
