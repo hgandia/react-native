@@ -1,15 +1,29 @@
 //import { useState } from 'react';
-import { FlatList } from 'react-native';
+import { FlatList, Text, View } from 'react-native';
 import { Tile } from 'react-native-elements';
 //import { CAMPSITES } from '../shared/campsites';
 import { useSelector } from 'react-redux';
 import { baseUrl } from '../shared/baseUrl';
+import Loading from '../components/LoadingComponent';
 
 const DirectoryScreen = ({ navigation }) => {
     //This is how we used to get the campsites data, while update the local state variable.
     //const [campsites, setCampsites] = useState(CAMPSITES);
 
     const campsites = useSelector((state) => state.campsites);
+
+    if(campsites.isLoading){
+        return <Loading />;
+    }
+    
+    if(campsites.errMess){
+        return(
+            <View>
+                <Text>{campsites.errMess}</Text>
+            </View>
+        );
+    }
+
 
     const renderDirectoryItem =({item: campsite}) => {
         return(
