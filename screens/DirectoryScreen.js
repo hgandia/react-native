@@ -7,7 +7,7 @@ import { baseUrl } from '../shared/baseUrl';
 import Loading from '../components/LoadingComponent';
 
 const DirectoryScreen = ({ navigation }) => {
-    //This is how we used to get the campsites data, while update the local state variable.
+    //This is how we used to get the campsites data, while updating the local state variable.
     //const [campsites, setCampsites] = useState(CAMPSITES);
 
     const campsites = useSelector((state) => state.campsites);
