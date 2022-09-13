@@ -4,9 +4,9 @@ import { CheckBox, Input } from 'react-native-elements';
 import * as SecureStore from 'expo-secure-store';
 
 const LoginScreen = () => {
-    const [username, setUsername] = useState();
-    const [password, setPassword] = useState();
-    const [remember, setRemember] = useState();
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+    const [remember, setRemember] = useState(false);
     
     const handleLogin = () => {
         console.log('username is: ', username);
